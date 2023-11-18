@@ -14,7 +14,7 @@ namespace CutlerIT_MiniProject.Pages
 
         public void OnGet()
         {
-
+            //Code runs when page is opened:
         }
     }
 }

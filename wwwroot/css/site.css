@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+/*To do note:*/
+.ToDoNote #title{
+    width: 100%;
+}
