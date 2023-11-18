@@ -15,14 +15,18 @@
 
         <!--Add new note form (input fields):-->
         <form class="ToDoNote">
-            <label for="title">Title:</label><br>
+            <label for="title"><strong>Title:</strong></label><br>
             <input type="text" id="title" name="title" maxlength="50"/>                 <!--Input for to do title-->
             <br>
-            <label for="note">To Do Note:</label><br>
+            <label for="note"><strong>To Do Note:</strong></label><br>
             <textarea type="text" id="note" name="note" maxlength="300"></textarea>     <!--Input for to do note-->
             <br>
-            <label for="date">Deadline:</label><br>
+            <label for="date"><strong>Deadline:</strong></label><br>
             <input type="date" id="date" name="date"/>                                  <!--Input for to do deadline date-->
+
+            <!--Button to submit new to do note:-->
+            <br>
+            <button class="submit">Add Note</button>                                    
         </form>
     </div>
 </section>

@@ -33,3 +33,15 @@ body {
 .ToDoNote #date{
     width: 160px;
 }
+
+/*Add new note button:*/
+.ToDoNote .submit {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+
+    width: 120px;
+    background-color: #bf0b1d;
+    color: white;
+    font-weight: bold;
+}
