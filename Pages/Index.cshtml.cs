@@ -16,30 +16,45 @@ namespace CutlerIT_MiniProject.Pages
         public void OnGet()
         {
             //Code runs when page is opened:
-            try
-            {
-                Note note = new Note()
-                {
-                    Title = "Test Insert",
-                    Note1 = "Test insert into the database.",
-                    Date = "20/11/2023"
-                };
-
-                AddNote(note);
-            }
-            catch (Exception ex)
-            {
-
-            }
+            AddNote("Test Insert 2", "Another insert test", "12/11/2023");
         }
 
-        private void AddNote(Note note)
+
+        //Adds new note to the database:
+        public static void AddNote(string title, string noteTxt, string date)
         {
-            using(var db = new TodoContext())
+            //Checks the date is not in the past:
+            var parsedDate = DateTime.Parse(date);
+            if(parsedDate < DateTime.Now)
             {
-                db.Notes.Add(note);
-                db.SaveChanges();
+                Console.WriteLine("Date must not be in the past.");
             }
+            else
+            {
+                //If date not in the past, add new to do note to database:
+                try
+                {
+                    Note note = new Note()
+                    {
+                        Title = title,
+                        Note1 = noteTxt,
+                        Date = date
+                    };
+
+                    using (var db = new TodoContext())
+                    {
+                        db.Notes.Add(note);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //Write any errors to the console:
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            
         }
     }
 }
