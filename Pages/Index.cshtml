@@ -4,6 +4,8 @@
     ViewData["Title"] = "To Do List";
 }
 
+<asp:ScriptManager EnablePageMethods="true"></asp:ScriptManager>
+
 <section>
     <div class="text-center">
         <!--Page title:-->
@@ -26,7 +28,7 @@
 
             <!--Button to submit new to do note:-->
             <br>
-            <button class="submit">Add Note</button>                                 
+            <button class="submit" onclick="AddNewNote(); return false;">Add Note</button>                                 
         </form>
     </div>
 </section>

@@ -16,7 +16,6 @@ namespace CutlerIT_MiniProject.Pages
         public void OnGet()
         {
             //Code runs when page is opened:
-            AddNote("Test Insert 2", "Another insert test", "12/11/2023");
         }
 
 
@@ -25,7 +24,7 @@ namespace CutlerIT_MiniProject.Pages
         {
             //Checks the date is not in the past:
             var parsedDate = DateTime.Parse(date);
-            if(parsedDate < DateTime.Now)
+            if(parsedDate > DateTime.Now)
             {
                 Console.WriteLine("Date must not be in the past.");
             }
