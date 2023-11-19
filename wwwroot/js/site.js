@@ -7,7 +7,7 @@ function AddNewNote() {
     var noteTxt = document.getElementById('note').value;
     var date = document.getElementById('date').value;
 
-    alert(title + " " + noteTxt + " " + date);
+    //alert(title + " " + noteTxt + " " + date);
 
-    PageMethod.AddNote(title, noteTxt, date);
+    DotNet.invokeMethodAsync('CutlerITMiniProject', 'AddNote', title, noteTxt, date);
 }

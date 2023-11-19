@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using CutlerIT_MiniProject.Models;
+using Microsoft.JSInterop;
 
 namespace CutlerIT_MiniProject.Pages
 {
@@ -20,6 +21,7 @@ namespace CutlerIT_MiniProject.Pages
 
 
         //Adds new note to the database:
+        [JSInvokable]
         public static void AddNote(string title, string noteTxt, string date)
         {
             //Checks the date is not in the past:
@@ -30,6 +32,8 @@ namespace CutlerIT_MiniProject.Pages
             }
             else
             {
+                Console.WriteLine("Adding note...");
+
                 //If date not in the past, add new to do note to database:
                 try
                 {
@@ -40,11 +44,15 @@ namespace CutlerIT_MiniProject.Pages
                         Date = date
                     };
 
+                    Console.WriteLine("New note initialised");
+
                     using (var db = new TodoContext())
                     {
                         db.Notes.Add(note);
                         db.SaveChanges();
                     }
+
+                    Console.WriteLine("Note added.");
                 }
                 catch (Exception ex)
                 {

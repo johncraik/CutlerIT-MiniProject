@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>CutlerIT_MiniProject</RootNamespace>
+    <AssemblyName>CutlerITMiniProject</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
