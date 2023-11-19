@@ -63,3 +63,7 @@ body {
     color: white;
     font-weight: bold;
 }
+
+.ToDoNote .submit:hover {
+    background-color: #2e2e2e;
+}
