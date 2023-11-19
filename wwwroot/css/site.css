@@ -17,12 +17,29 @@ body {
 
 
 /*To do note:*/
+.ToDoNote {
+    border-style: solid;
+    border-color: #2e2e2e;
+    border-width: 3px;
+}
+
+.ToDoNote .labelTop {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.ToDoNote .label {
+    margin-left: 15px;
+}
+
 .ToDoNote #title{
+    margin-left: 15px;
     width: 50%;
     min-width: 500px;
 }
 
-.ToDoNote #note{
+.ToDoNote #note {
+    margin-left: 15px;
     width: 80%;
     min-width: 800px;
     height: 250px;
@@ -30,16 +47,17 @@ body {
     max-height: 800px;
 }
 
-.ToDoNote #date{
+.ToDoNote #date {
     width: 160px;
+    margin-left: 15px;
 }
 
 /*Add new note button:*/
 .ToDoNote .submit {
     margin-top: 15px;
     margin-bottom: 15px;
+    margin-left: 15px;
     padding: 10px;
-
     width: 120px;
     background-color: #bf0b1d;
     color: white;
