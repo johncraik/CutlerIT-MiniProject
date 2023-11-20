@@ -67,3 +67,18 @@ body {
 .ToDoNote .submit:hover {
     background-color: #2e2e2e;
 }
+
+
+/*List of to do notes table:*/
+.ToDoList{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+tr{
+    border-width: 2px;
+    border-style: solid;
+    border-color: #2e2e2e;
+    border-collapse: collapse;
+}
