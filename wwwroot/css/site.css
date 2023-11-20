@@ -15,6 +15,12 @@ body {
   margin-bottom: 60px;
 }
 
+.PageContainer {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 
 /*To do note:*/
 .ToDoNote {
@@ -71,14 +77,23 @@ body {
 
 /*List of to do notes table:*/
 .ToDoList{
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     width: 100%;
+    
 }
 
-tr{
+table{
+    border-spacing: 30px;
+}
+
+tr {
     border-width: 2px;
     border-style: solid;
     border-color: #2e2e2e;
     border-collapse: collapse;
+}
+
+td{
+    padding: 15px;
 }
