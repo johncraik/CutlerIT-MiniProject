@@ -28,7 +28,7 @@ namespace CutlerIT_MiniProject.Pages
             {
                 //Checks the date is not in the past:
                 var parsedDate = DateTime.Parse(date);
-                if (parsedDate < DateTime.Now)
+                if (parsedDate <= DateTime.Now)
                 {
                     Console.WriteLine("Date must not be in the past.");
                 }
