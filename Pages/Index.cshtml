@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}/{title?}/{noteTxt?}/{date?}"
 @model IndexModel
 @{
     ViewData["Title"] = "To Do List";
@@ -16,19 +16,25 @@
         <h3>Add new note:</h3>
 
         <!--Add new note form (input fields):-->
-        <form class="ToDoNote">
+        <form class="ToDoNote" asp-page-handler="AddNote" method="post">
             <label class="labelTop" for="title"><strong>Title:</strong></label><br>
             <input type="text" id="title" name="title" maxlength="50"/>                 <!--Input for to do title-->
             <br>
-            <label class="label" for="note"><strong>To Do Note:</strong></label><br>
-            <textarea type="text" id="note" name="note" maxlength="300"></textarea>     <!--Input for to do note-->
+            <label class="label" for="noteTxt"><strong>To Do Note:</strong></label><br>
+            <textarea type="text" id="noteTxt" name="noteTxt" maxlength="300"></textarea>     <!--Input for to do note-->
             <br>
             <label class="label" for="date"><strong>Deadline:</strong></label><br>
             <input type="date" id="date" name="date"/>                                  <!--Input for to do deadline date-->
 
             <!--Button to submit new to do note:-->
             <br>
-            <button class="submit" onclick="AddNewNote()">Add Note</button>                                 
+            <ng-form asp-page-handler="AddNote" method="post">
+                <button class="submit">Add Note</button>    
+                <input type="hidden" name="title"/>
+                <input type="hidden" name="noteTxt"/>
+                <input type="hidden" name="date"/>
+            </ng-form>
+            
         </form>
     </div>
 
@@ -38,7 +44,7 @@
         <h3>Existing notes:</h3>
         
         <!--Table containing existing to do notes:-->
-        <table runat="server" class="ToDoList">
+        <table runat="server" id="ToDoList">
             <tr>
                 <td>Test Todo<br>Note text......<br>Deadline: 30/11/2023</td>
             </tr>

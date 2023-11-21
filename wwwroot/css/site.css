@@ -44,7 +44,7 @@ body {
     min-width: 500px;
 }
 
-.ToDoNote #note {
+.ToDoNote #noteTxt {
     margin-left: 15px;
     width: 80%;
     min-width: 800px;
@@ -76,7 +76,7 @@ body {
 
 
 /*List of to do notes table:*/
-.ToDoList{
+#ToDoList{
     margin-top: 15px;
     margin-bottom: 15px;
     width: 100%;

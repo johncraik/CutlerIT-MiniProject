@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using CutlerIT_MiniProject.Models;
-using Microsoft.JSInterop;
+using System.Web;
 
 namespace CutlerIT_MiniProject.Pages
 {
@@ -17,16 +17,17 @@ namespace CutlerIT_MiniProject.Pages
         public void OnGet()
         {
             //Code runs when page is opened:
+            AddToTable();
         }
 
 
         //Adds new note to the database:
-        [JSInvokable]
-        public static void AddNote(string title, string noteTxt, string date)
+        [HttpGet("AddNote")]
+        public void OnPostAddNote(string title, string noteTxt, string date)
         {
             //Checks the date is not in the past:
             var parsedDate = DateTime.Parse(date);
-            if(parsedDate > DateTime.Now)
+            if(parsedDate < DateTime.Now)
             {
                 Console.WriteLine("Date must not be in the past.");
             }
@@ -60,8 +61,11 @@ namespace CutlerIT_MiniProject.Pages
                     Console.WriteLine(ex.Message);
                 }
             }
+        }
 
-            
+        private void AddToTable()
+        {
+
         }
     }
 }
