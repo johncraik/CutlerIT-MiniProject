@@ -1,7 +1,38 @@
 ﻿@page "{handler?}/{title?}/{noteTxt?}/{date?}"
-@model IndexModel
+@model Pages.IndexModel
 @{
     ViewData["Title"] = "To Do List";
+}
+
+@namespace CutlerIT_MiniProject.Models
+
+@functions {
+    public string? GetTitle(Note note)
+    {
+        return note.Title;
+    }
+
+    public string? GetNoteTxt(Note note)
+    {
+        return note.Note1;
+    }
+
+    public string? GetDate(Note note)
+    {
+        return note.Date;
+    }
+
+    public Note? GetDbRow(int position)
+    {
+        Note? note = null;
+        using (var db = new TodoContext())
+        {
+            var query = db.Notes.Where(n => n.Id == position);
+            note = query.FirstOrDefault<Note>();
+        }
+
+        return note;
+    }
 }
 
 <section>
@@ -42,20 +73,11 @@
     <div class="PageContainer">
         <!--Existing notes title:-->
         <h3>Existing notes:</h3>
-        
-        @{
-            List<List<string>> dbData = new List<List<string>>();
-            List<string> dbRow = new List<string>();
-
-            var title = "test";
-            var noteTxt = "test note";
-            var date = DateTime.Now.Date;
-        }
 
         <!--Table containing existing to do notes:-->
         <table runat="server" id="ToDoList">
             <tr>
-                <td>@title<br>@noteTxt<br><strong>Deadline:</strong> @date</td>
+                <td>@GetTitle(@GetDbRow(6))<br>@GetNoteTxt(@GetDbRow(6))<br><strong>Deadline:</strong> @GetDate(@GetDbRow(6))</td>
             </tr>
         </table>
     </div>

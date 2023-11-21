@@ -17,7 +17,6 @@ namespace CutlerIT_MiniProject.Pages
         public void OnGet()
         {
             //Code runs when page is opened:
-            AddToTable();
         }
 
 
@@ -69,21 +68,6 @@ namespace CutlerIT_MiniProject.Pages
                 //If any parameters are null
                 Console.WriteLine(ex.Message);
             }
-        }
-
-        private void AddToTable()
-        {
-            
-        }
-
-        private List<List<string>> GetDbData()
-        {
-            List<List<string>> dbData = new List<List<string>>();
-            List<string> dbRow = new List<string>();
-
-
-
-            return dbData;
         }
     }
 }
