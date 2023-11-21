@@ -7,21 +7,25 @@
 @namespace CutlerIT_MiniProject.Models
 
 @functions {
+    /*Get the title of a note:*/
     public string? GetTitle(Note note)
     {
         return note.Title;
     }
 
+    /*Get the note text from a note:*/
     public string? GetNoteTxt(Note note)
     {
         return note.Note1;
     }
 
+    /*Get the deadline date of a note:*/
     public string? GetDate(Note note)
     {
         return note.Date;
     }
 
+    /*Get a note from the database using the ID*/
     public Note? GetDbRow(int position)
     {
         Note? note = null;
@@ -76,9 +80,12 @@
 
         <!--Table containing existing to do notes:-->
         <table runat="server" id="ToDoList">
-            <tr>
-                <td>@GetTitle(@GetDbRow(6))<br>@GetNoteTxt(@GetDbRow(6))<br><strong>Deadline:</strong> @GetDate(@GetDbRow(6))</td>
-            </tr>
+            @for (int i = 5; i < 8; i++)
+            {
+                <tr>
+                    <td>@GetTitle(@GetDbRow(i))<br>@GetNoteTxt(@GetDbRow(i))<br><strong>Deadline:</strong> @GetDate(@GetDbRow(i))</td>
+                </tr>
+            }
         </table>
     </div>
 </section>
