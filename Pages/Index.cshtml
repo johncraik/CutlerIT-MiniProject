@@ -58,17 +58,21 @@
     public int GetEndIndex()
     {
         using (var db = new TodoContext())
-        {           
+        {   
+            /*Get the first note in the databse:*/
             Note? note = db.Notes.FirstOrDefault<Note>();
             if(note == null)
             {
-                return 0;
+                /*if null, there are no existing notes. -1 will prevent the table being made*/
+                return -1;
             }
             else
             {
+                /*Set the end index to the first note*/
                 int endIndex = (int) note.Id;
                 while (note != null)
                 {
+                    /*Loop through each note until no new note can be found*/
                     var query = db.Notes.Where(n => n.Id == endIndex + 1);
                     note = query.FirstOrDefault<Note>();
                     if(note != null)
@@ -127,7 +131,7 @@
             @for (int i = @GetStartIndex(); i <= @GetEndIndex(); i++)
             {
                 <tr>
-                    <td>@GetTitle(@GetDbRow(i))<br>@GetNoteTxt(@GetDbRow(i))<br><strong>Deadline:</strong> @GetDate(@GetDbRow(i))</td>
+                    <td><strong>@GetTitle(@GetDbRow(i))</strong><br>@GetNoteTxt(@GetDbRow(i))<br><strong>Deadline:</strong> @GetDate(@GetDbRow(i))</td>
                 </tr>
             }
         </table>
