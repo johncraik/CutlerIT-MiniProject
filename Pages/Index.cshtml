@@ -25,7 +25,7 @@
         return note.Date;
     }
 
-    /*Get a note from the database using the ID*/
+    /*Get a note from the database using the ID:*/
     public Note? GetDbRow(int position)
     {
         Note? note = null;
@@ -36,6 +36,50 @@
         }
 
         return note;
+    }
+
+    /*Gets the starting index for the database:*/
+    public int GetStartIndex()
+    {
+        using (var db = new TodoContext())
+        {
+            Note? note = db.Notes.FirstOrDefault<Note>();
+            if(note == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return (int) note.Id;
+            }
+        }
+    }
+
+    public int GetEndIndex()
+    {
+        using (var db = new TodoContext())
+        {           
+            Note? note = db.Notes.FirstOrDefault<Note>();
+            if(note == null)
+            {
+                return 0;
+            }
+            else
+            {
+                int endIndex = (int) note.Id;
+                while (note != null)
+                {
+                    var query = db.Notes.Where(n => n.Id == endIndex + 1);
+                    note = query.FirstOrDefault<Note>();
+                    if(note != null)
+                    {
+                        endIndex += 1;
+                    }
+                }
+
+                return endIndex;
+            }
+        }
     }
 }
 
@@ -80,7 +124,7 @@
 
         <!--Table containing existing to do notes:-->
         <table runat="server" id="ToDoList">
-            @for (int i = 5; i < 8; i++)
+            @for (int i = @GetStartIndex(); i <= @GetEndIndex(); i++)
             {
                 <tr>
                     <td>@GetTitle(@GetDbRow(i))<br>@GetNoteTxt(@GetDbRow(i))<br><strong>Deadline:</strong> @GetDate(@GetDbRow(i))</td>
