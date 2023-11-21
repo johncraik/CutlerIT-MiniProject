@@ -43,16 +43,19 @@
         <!--Existing notes title:-->
         <h3>Existing notes:</h3>
         
+        @{
+            List<List<string>> dbData = new List<List<string>>();
+            List<string> dbRow = new List<string>();
+
+            var title = "test";
+            var noteTxt = "test note";
+            var date = DateTime.Now.Date;
+        }
+
         <!--Table containing existing to do notes:-->
         <table runat="server" id="ToDoList">
             <tr>
-                <td>Test Todo<br>Note text......<br>Deadline: 30/11/2023</td>
-            </tr>
-            <tr>
-                <td>Test Todo</td>
-            </tr>
-            <tr>
-                <td>Test Todo</td>
+                <td>@title<br>@noteTxt<br><strong>Deadline:</strong> @date</td>
             </tr>
         </table>
     </div>

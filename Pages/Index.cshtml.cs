@@ -25,47 +25,65 @@ namespace CutlerIT_MiniProject.Pages
         [HttpGet("AddNote")]
         public void OnPostAddNote(string title, string noteTxt, string date)
         {
-            //Checks the date is not in the past:
-            var parsedDate = DateTime.Parse(date);
-            if(parsedDate < DateTime.Now)
+            try
             {
-                Console.WriteLine("Date must not be in the past.");
-            }
-            else
-            {
-                Console.WriteLine("Adding note...");
-
-                //If date not in the past, add new to do note to database:
-                try
+                //Checks the date is not in the past:
+                var parsedDate = DateTime.Parse(date);
+                if (parsedDate < DateTime.Now)
                 {
-                    Note note = new Note()
-                    {
-                        Title = title,
-                        Note1 = noteTxt,
-                        Date = date
-                    };
+                    Console.WriteLine("Date must not be in the past.");
+                }
+                else
+                {
+                    Console.WriteLine("Adding note...");
 
-                    Console.WriteLine("New note initialised");
-
-                    using (var db = new TodoContext())
+                    //If date not in the past, add new to do note to database:
+                    try
                     {
-                        db.Notes.Add(note);
-                        db.SaveChanges();
+                        Note note = new Note()
+                        {
+                            Title = title,
+                            Note1 = noteTxt,
+                            Date = date
+                        };
+
+                        Console.WriteLine("New note initialised");
+
+                        using (var db = new TodoContext())
+                        {
+                            db.Notes.Add(note);
+                            db.SaveChanges();
+                        }
+
+                        Console.WriteLine("Note added.");
                     }
-
-                    Console.WriteLine("Note added.");
+                    catch (Exception ex)
+                    {
+                        //Write any errors to the console:
+                        Console.WriteLine(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    //Write any errors to the console:
-                    Console.WriteLine(ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                //If any parameters are null
+                Console.WriteLine(ex.Message);
             }
         }
 
         private void AddToTable()
         {
+            
+        }
 
+        private List<List<string>> GetDbData()
+        {
+            List<List<string>> dbData = new List<List<string>>();
+            List<string> dbRow = new List<string>();
+
+
+
+            return dbData;
         }
     }
 }
